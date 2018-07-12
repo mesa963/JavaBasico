@@ -4,28 +4,20 @@
  * and open the template in the editor.
  */
 package javabasico;
-
-import java.util.concurrent.ExecutionException;
-
 /**
  *
  * @author Jamm
  */
-public class ListaSimple {
+public class ListaSimple <T> {
 protected Nodo primero;
 
-    public void insertar(Object dato) throws Exception
+
+    public void insertar(T dato) 
     {
-        if(dato instanceof String)
-        {
         Nodo temporal = new Nodo(dato, null);
         temporal.setNext(primero);
         primero = temporal;
-        }
-        else
-        {
-           throw new Exception("Tipo de dato invalido");
-        }
+        
     }
 
     public ListaSimple() {

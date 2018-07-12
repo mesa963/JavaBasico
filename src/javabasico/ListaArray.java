@@ -10,9 +10,9 @@ import java.util.Arrays;
  *
  * @author Jamm
  */
-public class ListaArray {
+public class ListaArray<T> {
       
-    private Object[] values;
+    private T[] values;
     private int tamanno = 2;  
     private int posicion;
     private final static int INCREMENTO = 2;
@@ -20,11 +20,11 @@ public class ListaArray {
     
     
    public ListaArray() {
-        this.values = new Object[this.tamanno];
+        this.values = (T[])new Object[this.tamanno];
         this.posicion=0;
     }
     
-    public void insertarNuevoElemento(Object objeto){
+    public void insertarNuevoElemento(T objeto){
 
     if((posicion) == (this.tamanno/INCREMENTO)){  
         

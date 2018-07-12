@@ -17,9 +17,9 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        ListaSimple lista = new ListaSimple();
-        try {
-            lista.insertar(1);
+        ListaSimple<String> lista = new ListaSimple();
+
+            lista.insertar("1");
             lista.insertar("2");
             lista.insertar("3");
             lista.insertar("4");
@@ -29,9 +29,7 @@ public class Main {
             lista.insertar("8");
             lista.insertar("9");
             lista.insertar("10");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+
 
         lista.imprimir(0);
         lista.imprimir(1);
@@ -46,7 +44,7 @@ public class Main {
 
         System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------");
 
-        ListaArray lA = new ListaArray();
+        ListaArray<String> lA = new ListaArray();
         lA.insertarNuevoElemento("1");
         lA.insertarNuevoElemento("2");
         lA.insertarNuevoElemento("3");
