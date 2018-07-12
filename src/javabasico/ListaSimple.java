@@ -5,6 +5,8 @@
  */
 package javabasico;
 
+import java.util.concurrent.ExecutionException;
+
 /**
  *
  * @author Jamm
@@ -12,11 +14,18 @@ package javabasico;
 public class ListaSimple {
 protected Nodo primero;
 
-    public void Insertar(Object dato)
+    public void insertar(Object dato) throws Exception
     {
+        if(dato instanceof String)
+        {
         Nodo temporal = new Nodo(dato, null);
         temporal.setNext(primero);
         primero = temporal;
+        }
+        else
+        {
+           throw new Exception("Tipo de dato invalido");
+        }
     }
 
     public ListaSimple() {
@@ -25,7 +34,7 @@ protected Nodo primero;
     
     public void imprimir(int n) {
     
-    if (!Vacio()) {
+    if (!vacio()) {
       Nodo temporal = primero;
 
       
@@ -40,7 +49,7 @@ protected Nodo primero;
 
 
 
-  public boolean Vacio() {
+  public boolean vacio() {
     if (primero == null)
       return true;
     else
