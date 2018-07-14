@@ -55,6 +55,8 @@ public class Main {
         System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------");
         m.arrayListLamdaStream();
         
+        m.map();
+        
     }
     public void arrayListinsertar()
     {
@@ -89,6 +91,23 @@ public class Main {
         System.out.println(al);
             
     }
+    
+    public void map()
+    {
+     System.out.println("------------Map-----------------------------------------------------------------------------------------------------------------------");
+       Map<Integer,String> m = new  HashMap<Integer,String>();
+    
+        for (int i = 1; i < 101; i++) {
+            m.put(i,new StringBuilder(i+"").reverse().toString());
+        }
+        
+        m.values().stream().sorted(Comparator.reverseOrder()).forEach(x -> System.out.println(x));
+       
+    }
+    
+    
+    
+    
     
     
     
