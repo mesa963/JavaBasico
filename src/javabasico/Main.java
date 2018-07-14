@@ -6,7 +6,7 @@
 package javabasico;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 /**
  *
@@ -52,6 +52,9 @@ public class Main {
         }
         System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------");
         m.arrayListinsertar();
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------");
+        m.arrayListLamdaStream();
+        
     }
     public void arrayListinsertar()
     {
@@ -69,7 +72,23 @@ public class Main {
        
     }
     
+    public void arrayListLamdaStream()
+    {
+    ArrayList<String> al = new ArrayList();
     
+        for (int i = 1; i < 21; i++) {
+            al.add(i +"");
+        }
+        System.out.println(al);
+        
+        System.out.println("------------Profesor-----------------------------------------------------------------------------------------------------------------------");
+        al.stream().sorted((o1,o2)->{return o1.compareTo(o2);}).forEach(e -> System.out.println(e)); 
+        
+        System.out.println("------------Desarrollo-----------------------------------------------------------------------------------------------------------------------");
+        al.stream().sorted(Comparator.reverseOrder()).filter(o-> Integer.valueOf(o)> 10).forEach(e -> System.out.println(e));
+        System.out.println(al);
+            
+    }
     
     
     
