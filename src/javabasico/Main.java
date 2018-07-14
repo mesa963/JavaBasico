@@ -17,49 +17,37 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        ListaSimple<String> lista = new ListaSimple();
+   
+        
+        
+        ListaSimple<String> listaSimple = new ListaSimple("1");
 
-            lista.insertar("1");
-            lista.insertar("2");
-            lista.insertar("3");
-            lista.insertar("4");
-            lista.insertar("5");
-            lista.insertar("6");
-            lista.insertar("7");
-            lista.insertar("8");
-            lista.insertar("9");
-            lista.insertar("10");
+            for (int i = 2; i <= 10; i++) {
+                listaSimple.insertarNodo(i + "");
+            }
 
-
-        lista.imprimir(0);
-        lista.imprimir(1);
-        lista.imprimir(2);
-        lista.imprimir(3);
-        lista.imprimir(4);
-        lista.imprimir(5);
-        lista.imprimir(6);
-        lista.imprimir(7);
-        lista.imprimir(8);
-        lista.imprimir(9);
+            for (String valor : listaSimple) {
+                System.out.println(valor);
+            }
 
         System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------");
 
         ListaArray<String> lA = new ListaArray();
-        lA.insertarNuevoElemento("1");
-        lA.insertarNuevoElemento("2");
-        lA.insertarNuevoElemento("3");
-        lA.insertarNuevoElemento("4");
-        lA.insertarNuevoElemento("5");
-        lA.insertarNuevoElemento("6");
-        lA.insertarNuevoElemento("7");
-        lA.insertarNuevoElemento("8");
-        lA.insertarNuevoElemento("9");
-        lA.insertarNuevoElemento("10");
-
+       
+        for (int i = 1; i < 11; i++) {
+            lA.insertarNuevoElemento(i+"");
+        }
+        
         lA.mostrarElementos();
-
         System.out.println("Tamaño :" + lA.gettamanno());
-
+        
+        
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------");
+        
+        for(String item: lA){
+            System.out.println(item);
+            
+        }
     }
 
 }

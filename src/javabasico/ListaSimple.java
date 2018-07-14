@@ -8,45 +8,102 @@ package javabasico;
  *
  * @author Jamm
  */
-public class ListaSimple <T> {
-protected Nodo primero;
+import java.util.*;
+import java.util.function.Consumer;
+public class ListaSimple <T> implements Iterable<T>{
+private Nodo inicial;
+    private Nodo nodoActual;
+    
 
+    public ListaSimple(T objeto) {
+        Nodo nodo=new Nodo(objeto);
+        this.inicial = nodo;
+        this.nodoActual = nodo;
+       
+    }
 
-    public void insertar(T dato) 
-    {
-        Nodo temporal = new Nodo(dato, null);
-        temporal.setNext(primero);
-        primero = temporal;
+    public Nodo getRoot() {
+        return inicial;
+    }
+
+    public void setRoot(Nodo root) {
+        this.inicial = root;
+    }
+
+    public Nodo getNodoActual() {
+        return nodoActual;
+    }
+
+    public void setNodoAct(Nodo nodoAct) {
+        this.nodoActual = nodoAct;
+    }
+    
+    public void insertarNodo(T objeto) {
         
-    }
-
-    public ListaSimple() {
-        this.primero = null;
+        
+        Nodo nodo=new Nodo(objeto);
+       
+       this.nodoActual.setNext(nodo);
+       this.nodoActual=nodo;
+       
     }
     
-    public void imprimir(int n) {
-    
-    if (!vacio()) {
-      Nodo temporal = primero;
-
-      
-      for (int i = 0; i < n; i++) {
-        temporal = temporal.getNext();
-        if (temporal == null)
-          return;
-      }
-      System.out.println(temporal.getValue());
+    public void imprimir(){
+    Nodo nodo=this.inicial;
+        System.out.println(nodo);
+    while(nodo.getNext()!=null){
+        nodo=nodo.getNext();
+        System.out.println(nodo);
     }
-  }
+    }
+    
+    
+    
+    @Override
+    public Iterator<T> iterator() {
+        return new MiIterator();
+    }
+    
+    class MiIterator implements Iterator<T>{
+         private boolean imprimioElUltimo=false;
+        private Nodo nodoActualRecorrido=inicial;
+        
+        @Override
+    public boolean hasNext() {
+        if(this.nodoActualRecorrido.getNext()!=null)
+        return true;
+       if(this.imprimioElUltimo==false)
+       {
+           this.imprimioElUltimo=true;
+           return true;
+       }
+      return false;  
+    }
+
+    @Override
+    public T next() {
+        T objeto= (T)this.nodoActualRecorrido.getValue();
+        if(this.imprimioElUltimo==false)
+        this.nodoActualRecorrido=nodoActualRecorrido.getNext();
+        return objeto;
+    }
+
+    @Override
+    public void remove() {
+        Iterator.super.remove(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void forEachRemaining(Consumer action) {
+        Iterator.super.forEachRemaining(action); //To change body of generated methods, choose Tools | Templates.
+    }
+    }
+  
+  
 
 
 
-  public boolean vacio() {
-    if (primero == null)
-      return true;
-    else
-      return false;
-  }
+
 
     
     
